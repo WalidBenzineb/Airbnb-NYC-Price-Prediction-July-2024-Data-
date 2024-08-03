@@ -34,6 +34,14 @@ Our project follows these key steps:
 
 Each script can be run independently, but they should be executed in the order listed above for the full data science pipeline.
 
+## Data
+
+This project uses the Airbnb NYC dataset from July 05, 2024. Due to the large size of the files , they are not included directly in this repository. Instead, you can download them from the following links:
+
+https://insideairbnb.com/get-the-data/
+
+After downloading, place these files in the `data/` directory of the project before running the scripts.
+
 # Project Steps and Key Decisions
 
 ## 1. Data Collection and Initial Exploration
@@ -240,6 +248,7 @@ if st.button('Predict Price'):
 ## Running the Project
 
 * Clone the repository
+* Download the data files and place them in the `data/raw/` directory (see [Data](#data) section)
 * Install dependencies: `pip install -r requirements.txt`
 * Run data preprocessing: `python src/data_cleaning.py`
 * Perform feature engineering: `python src/feature_engineering.py`

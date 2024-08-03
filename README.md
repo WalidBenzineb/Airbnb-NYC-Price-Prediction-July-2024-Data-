@@ -16,6 +16,24 @@ Project Steps and Key Decisions
 * **Big Data Handling:** Processing and analyzing large datasets
 * **Data Cleaning:** Handling missing values, outlier detection and treatment
 
+## Project Structure
+
+Our project follows these key steps:
+
+1. **Data Cleaning** (`data_cleaning.py`): Preprocesses the raw data, handling missing values and outliers.
+
+2. **Initial Exploratory Data Analysis** (`exploratory_data_analysis.py`): Performs initial data visualization and statistical analysis to understand the dataset's characteristics.
+
+3. **Feature Engineering** (`feature_engineering.py`): Creates new features and transforms existing ones to improve model performance.
+
+4. **Feature-Focused EDA** (`feature_exploratory_data_analysis.py`): Analyzes the engineered features, providing insights into their relationships and potential impact on the target variable.
+
+5. **Model Training** (`refined_model.py`): Trains the XGBoost model using the preprocessed and engineered features.
+
+6. **Streamlit App** (`streamlit_app.py`): Provides a user-friendly interface for interacting with the trained model and visualizing results.
+
+Each script can be run independently, but they should be executed in the order listed above for the full data science pipeline.
+
 # Project Steps and Key Decisions
 
 ## 1. Data Collection and Initial Exploration

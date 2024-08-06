@@ -1,5 +1,5 @@
 # Project Overview
-This project aims to predict Airbnb listing prices in New York City using data from July 25, 2024. We'll walk through the entire data science process, from collecting and analyzing data to building a predictive model and creating a user-friendly web application.
+This project aims to predict Airbnb listing prices in New York City using data from July 25, 2024. I will walk through the entire data science process, from collecting and analyzing data to building a predictive model and creating a user-friendly web application.
 Project Steps and Key Decisions
 
 # Technologies and Skills Showcase
@@ -45,13 +45,13 @@ After downloading, place these files in the `data/` directory of the project bef
 # Project Steps and Key Decisions
 
 ## 1. Data Collection and Initial Exploration
-We started with three main data files:
+I started with three main data files:
 
 * [`calendar.csv`](./data/calendar.csv): Contains availability and pricing information
 * [`listings.csv`](./data/listings.csv): Detailed information about each Airbnb listing
 * [`reviews.csv`](./data/reviews.csv): User reviews for the listings
 
-**Key Decision:**  We focused primarily on the [`listings.csv`](./data/listings.csv) file as it contained the most relevant information for price prediction.
+**Key Decision:**  I focused primarily on the [`listings.csv`](./data/listings.csv) file as it contained the most relevant information for price prediction.
 
 ## 2. Data Cleaning and Preparation
 
@@ -59,7 +59,7 @@ Handled missing values
 Converted data types (e.g., dates, prices) to appropriate formats
 Removed extreme outliers to improve data quality
 
-**Key Decision:** We chose to remove extreme price outliers (above 99th percentile) to prevent them from skewing our model.
+**Key Decision:** I chose to remove extreme price outliers (above 99th percentile) to prevent them from skewing our model.
 
 ## 3. Exploratory Data Analysis (EDA)
 
@@ -67,25 +67,25 @@ Removed extreme outliers to improve data quality
 
 ![price_distribution](https://github.com/user-attachments/assets/e79ff7ff-66a4-4d21-8394-0b66797663ef)
 
-This histogram shows the distribution of Airbnb prices in NYC. We observed that:
+This histogram shows the distribution of Airbnb prices in NYC. I observed that:
 
 * Prices are heavily right-skewed
 * Most listings are concentrated in the lower price range
 * There are some very high-priced outliers
 
-**Key Decision:** Given the skewed nature of prices, we decided to use a log transformation on the price variable to make it more normally distributed for our model.
+**Key Decision:** Given the skewed nature of prices, I decided to use a log transformation on the price variable to make it more normally distributed for our model.
 
 ###Price by Room Type###
 
 ![price_by_room_type](https://github.com/user-attachments/assets/679835bb-d83e-4d19-b5c1-e2479f97cfd0)
 
-This box plot displays how prices vary across different room types. We found that:
+This box plot displays how prices vary across different room types. I found that:
 
 * Entire homes/apartments are generally more expensive
 * Shared rooms are the least expensive option
 * There's significant price overlap between private rooms and entire homes/apartments
 
-**Key Decision:** Room type is clearly an important factor in determining price, so we made sure to include it as a key feature in our model.
+**Key Decision:** Room type is clearly an important factor in determining price, so I made sure to include it as a key feature in our model.
 
 Correlation Matrix
 
@@ -96,11 +96,11 @@ This heatmap shows the correlations between different numerical features. Notabl
 * 'Number of reviews' and 'reviews per month' are highly correlated (as expected)
 * 'Availability 365' (number of days available in a year) has a moderate negative correlation with price
 
-**Key Decision:** Based on these correlations, we decided to engineer new features that could capture more complex relationships in the data.
+**Key Decision:** Based on these correlations, I decided to engineer new features that could capture more complex relationships in the data.
 
 ## 4. Feature Engineering
 
-We created several new features to capture more information:
+I created several new features to capture more information:
 
 *availability_rate: Percentage of days a listing is available
 *avg_price: Average price for each listing
@@ -108,10 +108,10 @@ We created several new features to capture more information:
 *days_since_last_review: To capture the recency of reviews
 *is_licensed: Whether the listing is licensed
 
-**Key Decision:** We created the availability_rate feature because we noticed that availability had a relationship with price, but it wasn't perfectly linear. This new feature allowed our model to capture more nuanced patterns.
+**Key Decision:** I created the availability_rate feature because I noticed that availability had a relationship with price, but it wasn't perfectly linear. This new feature allowed our model to capture more nuanced patterns.
 
 ## 5. Model Development
-We used XGBoost for our final model due to its strong performance on tabular data. Here's how we approached model development:
+I used XGBoost for our final model due to its strong performance on tabular data. Here's how I approached model development:
 
 1. Split the data into training and testing sets
 2. Created a pipeline that included:
@@ -127,11 +127,11 @@ Final model performance:
 * Root Mean Squared Error (RMSE): 0.2694
 * Mean Absolute Percentage Error (MAPE): 15.35% (On average, our predictions are off by about 15.35%)
 
-**Key Decision:** We chose XGBoost and fine-tuned its parameters because it consistently outperformed other algorithms we tried, including linear regression and random forests.
+**Key Decision:** I chose XGBoost and fine-tuned its parameters because it consistently outperformed other algorithms I tried, including linear regression and random forests.
 
 6. Interactive Web Application
 
-We created a Streamlit web app that allows users to:
+I created a Streamlit web app that allows users to:
 
 * Input details about a potential Airbnb listing
 * View interactive data visualizations
@@ -141,11 +141,11 @@ We created a Streamlit web app that allows users to:
 ![data_full](https://github.com/user-attachments/assets/1f27567e-1506-4d85-8245-87217de57e9e)
 
 
-**Key Decision:** We chose Streamlit for its simplicity and ease of deployment, making our model accessible to non-technical users.
+**Key Decision:** I chose Streamlit for its simplicity and ease of deployment, making our model accessible to non-technical users.
 
 ## Challenges Faced
 
-1. **Data Quality Issues:** The raw dataset contained missing values and outliers. We addressed this by implementing robust data cleaning procedures and carefully considering which data points to exclude to maintain data integrity without losing valuable information.
+1. **Data Quality Issues:** The raw dataset contained missing values and outliers. I addressed this by implementing robust data cleaning procedures and carefully considering which data points to exclude to maintain data integrity without losing valuable information.
 
 ```python
 # Example of handling missing values
@@ -154,7 +154,7 @@ df['reviews_per_month'] = df['reviews_per_month'].fillna(0)
 # Removing extreme price outliers
 df = df[df['price'] <= df['price'].quantile(0.99)]
 ```
-2. **Feature Engineering:** Creating meaningful features that capture the complexities of Airbnb pricing was challenging. We overcame this by combining domain knowledge with data-driven insights.
+2. **Feature Engineering:** Creating meaningful features that capture the complexities of Airbnb pricing was challenging. I overcame this by combining domain knowledge with data-driven insights.
 ```python
 # Creating availability rate feature
 df['availability_rate'] = df['availability_365'] / 365
@@ -162,7 +162,7 @@ df['availability_rate'] = df['availability_365'] / 365
 # Creating price per night feature
 df['price_per_night'] = df['price'] / df['minimum_nights'].clip(lower=1)
 ```
-3. **Model Optimization:** Balancing model complexity with performance was tricky. We used RandomizedSearchCV to efficiently search the hyperparameter space and find the optimal model configuration.
+3. **Model Optimization:** Balancing model complexity with performance was tricky. I used RandomizedSearchCV to efficiently search the hyperparameter space and find the optimal model configuration.
 ```python
 # Hyperparameter tuning with RandomizedSearchCV
 param_distributions = {
@@ -172,7 +172,7 @@ param_distributions = {
 }
 random_search = RandomizedSearchCV(pipeline, param_distributions, n_iter=20, cv=5, random_state=42)
 ```
-4. **Interpreting Complex Models:** XGBoost models can be challenging to interpret. We addressed this by using feature importance plots and SHAP (SHapley Additive exPlanations) values to understand the model's decision-making process.
+4. **Interpreting Complex Models:** XGBoost models can be challenging to interpret. I addressed this by using feature importance plots and SHAP (SHapley Additive exPlanations) values to understand the model's decision-making process.
 
 ## Code Snippets
 
